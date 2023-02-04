@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:track_my_spend/features/home/presentation/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -65,7 +66,12 @@ class SplashScreen extends StatelessWidget {
               height: 16,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    (Route<dynamic> route) => false);
+              },
               style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(0),
                   shape: RoundedRectangleBorder(
@@ -80,7 +86,7 @@ class SplashScreen extends StatelessWidget {
                   height: 40,
                   alignment: Alignment.center,
                   child: const Text(
-                    "Let's Start" ,
+                    "Let's Start",
                   ),
                 ),
               ),
