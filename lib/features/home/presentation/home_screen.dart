@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: double.infinity,
               height: 250,
               margin: const EdgeInsets.all(8),
-              padding: const EdgeInsets.only(left: 16,top: 24,right: 16),
+              padding: const EdgeInsets.only(left: 16, top: 24, right: 16),
               child: Card(
                 margin: const EdgeInsets.all(8),
                 shape: RoundedRectangleBorder(
@@ -38,15 +38,62 @@ class _HomeScreenState extends State<HomeScreen> {
                       gradient: LinearGradient(
                           colors: [Colors.blueAccent, Colors.red])),
                   child: Column(
-                    children: const [
-                      SizedBox(height: 16,),
-                      Text(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      const Text(
                         'Total Balance',
                       ),
-                      Text(
+                      const Text(
                         '3000.00',
                         style: TextStyle(color: Colors.white, fontSize: 24),
                       ),
+                      const SizedBox(
+                        height: 48,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: const [
+                                    Icon(Icons.arrow_circle_down),
+                                    Text('Income')
+                                  ],
+                                ),
+                                const Text('2300.00',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.white))
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 16),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: const [
+                                    Icon(Icons.arrow_circle_up),
+                                    Text('Expenses')
+                                  ],
+                                ),
+                                const Text(
+                                  '2300.00',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),
