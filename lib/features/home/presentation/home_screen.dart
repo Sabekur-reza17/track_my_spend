@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -161,6 +163,20 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           ],
         ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.blue,
+        color: Colors.red,
+        items: const [
+          Icon(Icons.home,size: 30,),
+          Icon(Icons.stacked_bar_chart,size: 30),
+          Icon(Icons.add,size: 30),
+          Icon(Icons.message_sharp,size: 30),
+          Icon(Icons.person_rounded,size: 30 ),
+        ],
+        onTap: (index){
+
+        },
       ),
     );
   }
