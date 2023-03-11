@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
+import 'package:track_my_spend/features/home/data/models/Transcation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,6 +10,49 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final transcationList = [
+    Transcation(
+        transIconUrl: "image_ulr",
+        transactionName: "Paypal",
+        amount: 2300.00,
+        transcationTime: "11.23 am"),
+    Transcation(
+        transIconUrl: "image_ulr",
+        transactionName: "Uber",
+        amount: 25000.00,
+        transcationTime: "10.23 am"),
+    Transcation(
+        transIconUrl: "image_ulr",
+        transactionName: "Brac Bank",
+        amount: 230000000.00,
+        transcationTime: "12.23 pm"),
+    Transcation(
+        transIconUrl: "image_ulr",
+        transactionName: "Paypal",
+        amount: 2700.00,
+        transcationTime: "01.23 pm"),
+    Transcation(
+        transIconUrl: "image_ulr",
+        transactionName: "Bank Asaia",
+        amount: 2700.00,
+        transcationTime: "01.23 pm"),
+    Transcation(
+        transIconUrl: "image_ulr",
+        transactionName: "Brac Bank",
+        amount: 230000000.00,
+        transcationTime: "12.23 pm"),
+    Transcation(
+        transIconUrl: "image_ulr",
+        transactionName: "Paypal",
+        amount: 2700.00,
+        transcationTime: "01.23 pm"),
+    Transcation(
+        transIconUrl: "image_ulr",
+        transactionName: "Bank Asaia",
+        amount: 2700.00,
+        transcationTime: "01.23 pm"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,55 +171,80 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                const CircleAvatar(
-                  child: Icon(
-                    Icons.supervised_user_circle_outlined,
-                    size: 24,
-                  ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Paypal Transfer',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+            ListView.builder(
+                itemCount: transcationList.length,
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Expanded(
+                          flex:1,
+                          child: CircleAvatar(
+                            child: Icon(
+                              Icons.supervised_user_circle_outlined,
+                              size: 24,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                transcationList[index].transactionName,
+                                style: const TextStyle(
+                                    fontSize: 20, color: Colors.black),
+                              ),
+                              Text(
+                                transcationList[index].transcationTime,
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.black54),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 30),
+                            child: Text(
+                              '${transcationList[index].amount}',
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                    Text(
-                      '1000.00',
-                      style:
-                      TextStyle(fontSize: 14, color: Colors.black54),
-                    ),
-                  ],
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 30),
-                  child: Text(
-                    '4000',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                )
-              ],
-            )
+                  );
+                }),
+            const SizedBox(
+              height: 16,
+            ),
           ],
         ),
       ),
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.white,
         color: Colors.red,
         items: const [
-          Icon(Icons.home,size: 30,),
-          Icon(Icons.stacked_bar_chart,size: 30),
-          Icon(Icons.add,size: 30),
-          Icon(Icons.message_sharp,size: 30),
-          Icon(Icons.person_rounded,size: 30 ),
+          Icon(
+            Icons.home,
+            size: 30,
+          ),
+          Icon(Icons.stacked_bar_chart, size: 30),
+          Icon(Icons.add, size: 30),
+          Icon(Icons.message_sharp, size: 30),
+          Icon(Icons.person_rounded, size: 30),
         ],
-        onTap: (index){
-
-        },
+        onTap: (index) {},
       ),
     );
   }
